@@ -1,0 +1,24 @@
+---
+- hosts: win
+  tasks:
+          #    - name: login check
+          #uri:
+          #url: http://10.197.9.203/nagios
+          #user: nagiosadmin
+          #Password: "not the admin password"
+          #force_basic_auth: yes
+          #status_code: 401
+
+    - name: Ensure admin can log in
+      uri:
+        url: http://10.197.9.230
+        user: anakage
+        password: "Test#123"
+        force_basic_auth: yes
+        return_content: yes
+        register: login
+    - debug: var=login
+        #    - name: Ensure user is properly greeted when logged in
+        #assert:
+        #that:
+        #- "'Welcome Admin' in login.content"
